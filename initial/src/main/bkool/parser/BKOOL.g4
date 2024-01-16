@@ -14,16 +14,17 @@ options {
 
 program:  EOF;
 
-IDENTIFIER: [a-z] [a-z0-9]*;
-
-bkNetID: t=ten '.' h=ho ct=chuoiTuChon;
+bkNetID: t=ten '.' h=ho c=chuoiTuChon;
 
 ten: LETTER+;
 ho: LETTER+;
-chuoiTuChon: (LETTER | DIGIT | '.' | '_')* '.'?;
+chuoiTuChon: (LETTER | DIGIT | '_' | '.')*{0-4} (LETTER | DIGIT | '_');
+
 
 fragment LETTER: [a-z];
 fragment DIGIT: [0-9];
+
+// IDENTIFIER: [a-z] [a-z0-9]*;
 
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
